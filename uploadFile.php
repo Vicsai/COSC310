@@ -13,7 +13,6 @@ echo "hello friend";
 	$uploadOK=1;
 	$fileUploaded=basename($_FILES["uploadFile"]["name"]);
 	$fileType=pathinfo($fileUploaded,PATHINFO_EXTENSION);
-	echo "file type is $fileUploaded";
 	if(isset($_POST["submit"])){
 		if($fileType!=="csv"){
 			echo "Please upload a csv file";
