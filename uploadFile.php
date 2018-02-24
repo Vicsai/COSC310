@@ -33,10 +33,3 @@ or die("Error connecting to server");
 </body>
 </html>
 
-<!-- 	$query="SELECT * FROM USERS";
-	mysqli_query($db,$query) or die("Error querying");
-	$result=mysqli_query($db,$query);
-	$row=mysqli_fetch_array($result);
-	while($row=mysqli_fetch_array($result)){
-		echo $row["First Name"];
-	} -->
