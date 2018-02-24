@@ -11,7 +11,7 @@ echo "hello friend";
 	<?php
 	// echo "I AM WORKING";
 	$uploadOK=1;
-	$fileUploaded=$_FILES["uploadFile"]["name"];
+	$fileUploaded=basename($_FILES["uploadFile"]["name"]);
 	$fileType=pathinfo($fileUploaded,PATHINFO_EXTENSION);
 	echo "file type is $fileUploaded";
 	if(isset($_POST["submit"])){
