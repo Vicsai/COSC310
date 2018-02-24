@@ -1,0 +1,7 @@
+username,MoneyIn,MoneyOut,transDate,Description
+a,200.00,,30/03/2016,"Cheque Deposit TN04"
+b,,50.00,26/03/2016,"Payment for Goods"
+c,,625.00,21/03/2016,"Consultancy Fees"
+d,500.00,,14/03/2016,"Cheque Depost RL02"
+e,,50.00,09/03/2016,"ATM Withdrawl High Street"
+f,0.46,,03/03/2016,"Net Interest"
