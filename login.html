@@ -1,13 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
 
-<?php
-$con = new mysqli('localhost','octo','w3b7ysX6','octo');
+<head>
+<title>Create New Account</title>
+<link rel="stylesheet" type="text/css" href="login.css">
+</head>
+
+<body>
+
+<form class="form">
+  <br>
+  <h2>Login</h2>
+  
+Username:
+    <input type="text" name="username" id="username" required="required"/>
+  
+ <label for="password">Password</label>
+    <input type="password" name="password" id="password"  required="required" />
+
+<button>Login</button>
+
+ <div class="createacc">
+      Don't have an account? <a href="#">Create one</a>
+  </div>
+
+</form>
+<br>
 
 
 
-if($con ->connect_error){
-	die("Connection failed". $con->connect_error);
-}
-
-echo 'Connected Succesfully';
-
-?>
+</body>
+</html>
