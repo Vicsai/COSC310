@@ -13,8 +13,10 @@ else
 <body>
 	<?php
 	// echo "I AM WORKING";
+	$moveLocation="csvFiles/".basename($_FILES["uploadFile"]["name"]);
+
 	$uploadOK=1;
-	$fileUploaded=basename($_FILES["uploadFile"]["name"]);
+	$fileUploaded=$_FILES["uploadFile"]["name"];
 	$fileUploaded=trim($fileUploaded);
 	$fileType=pathinfo($fileUploaded,PATHINFO_EXTENSION);
 	if(isset($_POST["submit"])){
@@ -23,6 +25,7 @@ else
 			$uploadOK=0;
 		}
 		if($uploadOK==1){
+			
 			$sql="LOAD DATA LOCAL INFILE '$fileUploaded' INTO TABLE csvData"
 			. " FIELDS TERMINATED BY ','"
 			. " LINES TERMINATED BY '\r\n'"
