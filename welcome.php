@@ -9,7 +9,12 @@ $sessionUser=$_SESSION['currentUser'];
    </head>
    
    <body>
-      <h1>Welcome <?php print("$sessionUser"); ?></h1> 
+    <h1>Welcome <?php 
+    	if(!(empty($sessionUser)))
+       		print("$sessionUser"); 
+   		else
+   			header("location:login.html");
+   	?></h1> 
       <h2><a href = "logout.php">Sign Out</a></h2>
    </body>
    
