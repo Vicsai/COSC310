@@ -1,6 +1,5 @@
 <?php
-session_start();
-$sessionUser=$_SESSION['currentUser'];
+include("sessionCheck.php");
 ?>
 <html>
    
@@ -10,8 +9,8 @@ $sessionUser=$_SESSION['currentUser'];
    
    <body>
     <h1>Welcome <?php 
-    	if(!(empty($sessionUser)))
-       		print("$sessionUser"); 
+    	if(!(empty($currentUser)))
+       		print("$currentUser"); 
    		else
    			header("location:login.html");
    	?></h1> 
