@@ -2,22 +2,21 @@
 <html>
 
 <head>
-<title>Create New Account</title>
+<title>Login</title>
 <link rel="stylesheet" type="text/css" href="login.css">
 </head>
 
 <body>
 
-<form class="form" method = "post">
+<form action="login2.php" class="form" method = "post">
   <br>
   <h2>Login</h2>
   
+    <input type="text" name="username" id="username" required="required">
 
-    <input type="text" name="username" id="username" required="required"/>
+    <input type="password" name="password" id="password" required="required">
 
-    <input type="password" name="password" id="password"  required="required" />
-
-    <input type ="submit" name="submit" id = "submit">
+    <input type ="submit" name="submit" id = "submit" value="submit">
 
  <div class="createacc">
       Don't have an account? <a href="#">Create one</a>

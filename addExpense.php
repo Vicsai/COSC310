@@ -68,10 +68,6 @@ $stmt->close();
 	</select>
   <input type="submit" value="Submit">
 	</form>
-	<?php
-	$msg = "";
-	$msg=$_GET['message'];
-	echo $msg;
-	?>
+
 </body>
 </html>
