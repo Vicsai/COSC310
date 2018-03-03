@@ -1,6 +1,7 @@
 <?php
+
 $con = new mysqli('localhost','root',"",'cosc310');
-	if($con ->connect_error){
+if($con ->connect_error){
     die("Connection failed". $con->connect_error);}
 
 $years = array();
@@ -20,29 +21,24 @@ $stmt->close();
 // 	echo $years[$i];
 // }
 }
+
+
+
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Add Expense To a Month</title>
+	<title>Add Expense</title>
 </head>
 <body>
 
 
 
-	<form method = "post" action = "processExpense.php">
+	<form method = "post" action = "viewMonthlyExpenses.php">
 
- 	 <input type="text" name="amount" placeholder="Enter $ Amount Here" >
-  <br>
-   <select name ="category">
-   <option disabled>Choose Expense</option>
-  <option >food</option>
-  <option >rent</option>
-  <option >clothing</option>
-	<option>entertainment</option>
-	<option>income</option>
-</select>
-  <br>
+
 <select name = "month">
    <option disabled>Choose Month</option>
   <option >January</option>
@@ -59,19 +55,20 @@ $stmt->close();
   <option >December</option>
 </select>
   <br>
-	<select name = "year">
-	<?php
-	for($i = 0; $i < count($years); $i++){
-		echo '<option>'.$years[$i].'</option>';
-	}
-		?>
-	</select>
+
+
+<select name = "year">
+<?php
+for($i = 0; $i < count($years); $i++){
+	echo '<option>'.$years[$i].'</option>';
+}
+	?>
+
+</select>
   <input type="submit" value="Submit">
 	</form>
-	<?php
-	$msg = "";
-	$msg=$_GET['message'];
-	echo $msg;
-	?>
+
+
+
 </body>
 </html>
