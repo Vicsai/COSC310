@@ -80,6 +80,7 @@ body{
     <p>Want to take control of your financies like a boss?</p>
     <p>Make your money work for you?</p>
     <p>Sign up today.</p>
+    <img src="images/piggy.png" height="100">
   </div>
 
 
