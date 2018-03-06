@@ -1,7 +1,7 @@
 
 <?php
 
-// $con = new mysqli('localhost','octo','w3b7ysX6','octo');
+$con = new mysqli('localhost','octo','w3b7ysX6','octo');
 //
 //
 //
@@ -11,7 +11,7 @@
 //
 // echo 'Connected Succesfully';
 
-$con = new mysqli('localhost','root',"",'cosc310');
+//$con = new mysqli('localhost','root',"",'cosc310');
 
 if($con ->connect_error){
     die("Connection failed". $con->connect_error);
@@ -28,7 +28,7 @@ $data = false;
 $year = 0;
 if($stmt=$con->prepare("SELECT rent,food,clothing,entertainment,income FROM finances WHERE username=? and month = ? and year = ?" )){
         $stmt->bind_param("ssi",$username,$month,$year);
-        $username='test';
+        $username='davidLevi';
         //set username to session attribute
         $month = $_POST['month'];
         $year = $_POST['year'];
