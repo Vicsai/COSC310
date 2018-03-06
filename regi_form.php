@@ -28,19 +28,6 @@ form{
 .logo{
   height: 4em;
 }
-.bg {
-    /* The image used */
-    background-image: url("images/background.jpg");
-
-    /* Full height */
-    height: 100%;
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 </style>
 
   <main>
@@ -48,17 +35,29 @@ form{
     <header>
 
 
-    <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container">
-      <a href="homepage.php" class="navbar-left"><img src="images/mc_logo.png"></a>
-      <ul class="nav navbar-nav">
-        <li class="nav-item active">
-          <a class "nav-link" href="login.php">LOG IN</a>
-        </li>
-      </ul>
-    </div>
-    </nav>
-
+       <nav class="navbar navbar-inverse">
+         <div class="container-fluid">
+           <div class="navbar-header">
+             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+             </button>
+             <a href="homepage.php"><img src="images/mc_logo.png" width="100" height="50" alt="logo">
+             </a>
+           </div>
+           <div id="navbar1" class="navbar-collapse collapse">
+             <ul class="nav navbar-nav">
+               <li><a href="login.php">LOG IN</a></li>
+             </ul>
+           </div>
+           <!--/.nav-collapse -->
+         </div>
+         <!--/.container-fluid -->
+       </nav>
+      </div>
     </header>
 <body>
 
