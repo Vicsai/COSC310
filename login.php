@@ -51,7 +51,7 @@ form{
       <div class="container">
       <ul class="nav navbar-nav">
         <a href="homepage.html" ><img class="logo" src="images/mc_logo.png"></a>
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" ><a href="regi_form.html">SIGN UP</a></button
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" ><a href="regi_form.php">SIGN UP</a></button
       </ul>
     </div>
     </nav>
