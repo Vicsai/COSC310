@@ -25,9 +25,6 @@ h1{
   margin-bottom: 5%;
 }
 
-.logo{
-  height: 4em;
-}
 insert4{
   margin-bottom: 10%;
 }
@@ -36,6 +33,10 @@ insert4{
   background-color: #611BBD;
   border-color: #130269;
 }
+body{
+  background-color: #C0C0C0;
+}
+
 </style>
 
 <body>

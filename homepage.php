@@ -24,11 +24,11 @@
   height: 4em;
 }
 h1{
-  font-size: 40pt;
+  font-size: 50pt;
 }
 
 body{
-  background-color: #e6e6e6;
+  background-color: #C0C0C0;
 }
 
 .nav-item{
@@ -73,7 +73,7 @@ body{
 	</header>
 
   <div class= page-header>
-	   <h1>MOOLA CONTROL </h1>
+	   <img src="images/title.png" width="700">
   </div>
 
   <div class=jumbotron>

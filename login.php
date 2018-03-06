@@ -26,9 +26,10 @@ form{
   color: white;
 
 }
-.logo{
-  height: 4em;
+body{
+  background-color: #C0C0C0;
 }
+
 
 </style>
 <body>
