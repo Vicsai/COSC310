@@ -63,8 +63,8 @@ insert4{
 
 
   <div class=insert>
-  <a href="uploadFile.php" button type="button" class="btn btn-default">Link to Bank</button></a>
-  <a href="addExpense.html" button type="button" class="btn btn-default">Manually Add</button></a></br>
+  <a href="uploadPage.html" button type="button" class="btn btn-default">Link to Bank</button></a>
+  <a href="addExpense.php" button type="button" class="btn btn-default">Manually Add</button></a></br>
 </div>
   <div class=insert2>
     <a href="selectBudget.php"><button type="button" class="btn btn-sample btn-lg ">View Budget</button></a>
