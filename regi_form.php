@@ -47,14 +47,17 @@ form{
   <div class="bg">
     <header>
 
-      <nav class="navbar navbar-inverse navbar-static-top">
-        <div class="container">
-        <ul class="nav navbar-nav">
-          <a href="homepage.html" ><img class="logo" src="images/mc_logo.png"></a>
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><a href="login.html">LOG IN</a></button>
-        </ul>
-      </div>
-      </nav>
+
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+      <a href="homepage.php" class="navbar-left"><img src="images/mc_logo.png"></a>
+      <ul class="nav navbar-nav">
+        <li class="nav-item active">
+          <a class "nav-link" href="login.php">LOG IN</a>
+        </li>
+      </ul>
+    </div>
+    </nav>
 
     </header>
 <body>

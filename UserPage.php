@@ -31,18 +31,6 @@ h1{
 insert4{
   margin-bottom: 10%;
 }
-.bg {
-    /* The image used */
-    background-image: url("images/background.jpg");
-
-    /* Full height */
-    height: 100%;
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 .btn-sample {
   color: #ffffff;
   background-color: #611BBD;
@@ -54,11 +42,15 @@ insert4{
    <div class="bg">
   <header>
 
+
     <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container">
+      <a href="homepage.php" class="navbar-left"><img src="images/mc_logo.png"></a>
       <ul class="nav navbar-nav">
-          <a href="homepage.html" ><img class="logo" src="images/mc_logo.png"></a>
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" ><a href="homepage.html">LOG OUT</a></button>
+        <li class="nav-item active">
+          <a class "nav-link" href="logout.php">LOG OUT</a>
+        </li>
+      
       </ul>
     </div>
     </nav>
@@ -71,17 +63,17 @@ insert4{
 
 
   <div class=insert>
-  <a href="uploadFile.php"><button type="button" class="btn btn-default">Link to Bank</button></a>
-  <a href="addExpense.html"><button type="button" class="btn btn-default">Manually Add</button></a></br>
+  <a href="uploadFile.php" button type="button" class="btn btn-default">Link to Bank</button></a>
+  <a href="addExpense.html" button type="button" class="btn btn-default">Manually Add</button></a></br>
 </div>
   <div class=insert2>
-    <a href=""><button type="button" class="btn btn-sample btn-lg ">View Budget</button></a>
+    <a href="selectBudget.php"><button type="button" class="btn btn-sample btn-lg ">View Budget</button></a>
   </div>
   <div class=insert3>
-    <a href=""><button type="button" class="btn btn-sample btn-lg ">View Monthly Spending</button></a>
+    <a href="selectMonthlyExpenses.php"><button type="button" class="btn btn-sample btn-lg ">View Monthly Spending</button></a>
 </div>
 <div class=insert4>
-    <a href=""><button type="button" class="btn btn-sample btn-lg ">View Yearly Spending</button></a>
+    <a href="selectYearlyExpenses.php"><button type="button" class="btn btn-sample btn-lg ">View Yearly Spending</button></a>
 </div>
 
 </div>
