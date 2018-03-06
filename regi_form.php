@@ -71,7 +71,7 @@ form{
 
       <p>Please fill out all fields</p>
 
-      <form name = "regiForm" class="form" action="regi_form.php" method= "post">
+      <form name = "regiForm" class="form" action="regi_form2.php" method= "post">
 
       <div class="input-group input-group-sm center-block">
         <input type= "text" class= "form-control" id="firstName" name="firstName" required="required" placeholder="First Name">
@@ -92,7 +92,7 @@ form{
         <input type= "password" class= "form-control" id="confirmpassword" name="confirmpassword" required="required" placeholder="Confirm Password">
       </div>
 
-        <a href="#" class= "btn btn-default bth-lg" role="button">Submit</a>
+        <a href="regi_form2.php" class= "btn btn-default bth-lg" role="button">Submit</a>
 
       </form>
      </div>
