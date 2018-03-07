@@ -24,11 +24,11 @@
   height: 4em;
 }
 h1{
-  font-size: 40pt;
+  font-size: 50pt;
 }
 
 body{
-  background-color: #e6e6e6;
+  background-color: #C0C0C0;
 }
 
 .nav-item{
@@ -36,7 +36,6 @@ body{
   background-color: #282828;
 
 }
-
 .navbar{
   background-color: #282828;
 }
@@ -46,30 +45,42 @@ body{
     <div class="bg">
 	<header>
 
-    <nav class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-      <a href="homepage.php" class="navbar-left"><img src="images/mc_logo.png"></a>
-      <ul class="nav navbar-nav">
-        <li class="nav-item active">
-          <a class "nav-link" href="login.php">LOG IN</a>
-        </li>
-        <li class="nav-item active">
-          <a class "nav-link" href="regi_form.php">SIGN UP</a>
-        </li>
-      </ul>
+    <div class="container">
+     <nav class="navbar navbar-inverse">
+       <div class="container-fluid">
+         <div class="navbar-header">
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a href="homepage.php"><img src="images/mc_logo.png" width="100" height="50" alt="logo">
+           </a>
+         </div>
+         <div id="navbar1" class="navbar-collapse collapse">
+           <ul class="nav navbar-nav">
+             <li><a href="regi_form.php">SIGN UP</a></li>
+             <li><a href="login.php">LOG IN</a></li>
+           </ul>
+         </div>
+         <!--/.nav-collapse -->
+       </div>
+       <!--/.container-fluid -->
+     </nav>
     </div>
-    </nav>
 
 	</header>
 
   <div class= page-header>
-	   <h1>MOOLA CONTROL </h1>
+	   <img src="images/title.png" width="700">
   </div>
 
   <div class=jumbotron>
     <p>Want to take control of your financies like a boss?</p>
     <p>Make your money work for you?</p>
     <p>Sign up today.</p>
+    <img src="images/piggy.png" height="100">
   </div>
 
 

@@ -25,9 +25,6 @@ h1{
   margin-bottom: 5%;
 }
 
-.logo{
-  height: 4em;
-}
 insert4{
   margin-bottom: 10%;
 }
@@ -36,6 +33,10 @@ insert4{
   background-color: #611BBD;
   border-color: #130269;
 }
+body{
+  background-color: #C0C0C0;
+}
+
 </style>
 
 <body>
@@ -43,17 +44,29 @@ insert4{
   <header>
 
 
-    <nav class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-      <a href="homepage.php" class="navbar-left"><img src="images/mc_logo.png"></a>
-      <ul class="nav navbar-nav">
-        <li class="nav-item active">
-          <a class "nav-link" href="logout.php">LOG OUT</a>
-        </li>
-      
-      </ul>
+    <div class="container">
+     <nav class="navbar navbar-inverse">
+       <div class="container-fluid">
+         <div class="navbar-header">
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a href="homepage.php"><img src="images/mc_logo.png" width="100" height="50" alt="logo">
+           </a>
+         </div>
+         <div id="navbar1" class="navbar-collapse collapse">
+           <ul class="nav navbar-nav">
+             <li><a href="homepage.php">LOG OUT</a></li>
+           </ul>
+         </div>
+         <!--/.nav-collapse -->
+       </div>
+       <!--/.container-fluid -->
+     </nav>
     </div>
-    </nav>
 
     <div class= page-header>
        <h1>CONTROL YOUR MOOLA</h1>
