@@ -92,7 +92,7 @@ form{
         <input type= "password" class= "form-control" id="confirmpassword" name="confirmpassword" required="required" placeholder="Confirm Password">
       </div>
 
-        <a href="regi_form2.php" class= "btn btn-default bth-lg" role="button">Submit</a>
+        <a href="login.php" class= "btn btn-default bth-lg" role="button">Submit</a>
 
       </form>
      </div>
