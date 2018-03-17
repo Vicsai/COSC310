@@ -1,11 +1,11 @@
 <?php
+session_start();
 $con=new mysqli('localhost','octo','w3b7ysX6','octo');
 if($con->connect_error){
 	die("Connection failed");
 }
 else{
 	echo "connected";
-	session_start();
 }
 ?>
 <html>

@@ -9,7 +9,7 @@
 //     die("Connection failed". $con->connect_error);
 // }
 //
-
+include 'sessionCheck.php';
 $con=new mysqli('localhost','octo','w3b7ysX6','octo');
 
 if($con ->connect_error){
@@ -25,7 +25,7 @@ $income=0;
 
 if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainment) ,SUM(income) FROM finances WHERE username=?  and year = ?" )){
         $stmt->bind_param("si",$username,$year);
-        $username='davidLevi';
+        $username=$_SESSION['currentUser'];
         //set username to session attribute
         $year = $_POST['year'];
         $stmt->execute();

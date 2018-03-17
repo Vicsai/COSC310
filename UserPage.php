@@ -1,3 +1,7 @@
+<?php
+session_start();
+print($_SESSION['currentUser']);
+?>
 <!DOCTYPE html>
 <html>
 
