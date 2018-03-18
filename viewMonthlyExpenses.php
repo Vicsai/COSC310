@@ -78,6 +78,7 @@ var food = <?php echo $food?>;
 var clothing = <?php echo $clothing?>;
 var entertainment = <?php echo $entertainment?>;
 var income = <?php echo $income?>;
+var savings=income-(rent+food+clothing+entertainment);
 var month = '<?php echo $m?>';
 
 var color = "";
