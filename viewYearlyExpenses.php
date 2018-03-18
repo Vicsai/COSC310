@@ -1,19 +1,14 @@
-
 <?php
-
-// $con = new mysqli('localhost','octo','w3b7ysX6','octo');
-//
-//
-//
-// if($con ->connect_error){
-//     die("Connection failed". $con->connect_error);
-// }
-//
-
 $con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
 
-if($con ->connect_error){
-    die("Connection failed". $con->connect_error);
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
 }
 
 
@@ -25,7 +20,7 @@ $income=0;
 
 if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainment) ,SUM(income) FROM finances WHERE username=?  and year = ?" )){
         $stmt->bind_param("si",$username,$year);
-        $username='davidLevi';
+        $username=$u;
         //set username to session attribute
         $year = $_POST['year'];
         $stmt->execute();

@@ -65,7 +65,7 @@ footer{
          </div>
          <div id="navbar1" class="navbar-collapse collapse">
            <ul class="nav navbar-nav navbar-right">
-             <li><a href="homepage.php">LOG OUT</a></li>
+             <li><a href="logout.php">LOG OUT</a></li>
            </ul>
          </div>
          <!--/.nav-collapse -->

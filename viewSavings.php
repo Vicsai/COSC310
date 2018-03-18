@@ -1,19 +1,14 @@
-
 <?php
+$con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
 
-// $con = new mysqli('localhost','octo','w3b7ysX6','octo');
-//
-//
-//
-// if($con ->connect_error){
-//     die("Connection failed". $con->connect_error);
-// }
-//
-
-$con = new mysqli('localhost','root',"",'cosc310');
-
-if($con ->connect_error){
-    die("Connection failed". $con->connect_error);
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
 }
 
 
@@ -29,10 +24,11 @@ $year = 0;
 $months = array('January','February','March','April','May','June','July','August','September','October','November','December');
 $spendings = array();
 $incomes = array();
-while($x < 12){
 if($stmt=$con->prepare("SELECT rent,food,clothing,entertainment,income FROM finances WHERE username=? and month = ? and year = ?" )){
+while($x < 12){
+
         $stmt->bind_param("ssi",$username,$month,$year);
-        $username='test';
+        $username=$u;
         //set username to session attribute
         $month =$months[$x];
         //$year = $_POST['year'];

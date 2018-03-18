@@ -1,3 +1,18 @@
+<?php
+$con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
+
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +73,17 @@ footer{
            </div>
            <div id="navbar1" class="navbar-collapse collapse">
              <ul class="nav navbar-nav navbar-right">
-               <li><a href="login.php">LOG IN</a></li>
+               <li><a href="howitworks.php">How it Works</a></li>
+               <li><a href="about.php">About Us</a></li>
+               <?php
+               if(!$isLoggedIn){
+               echo ' <li><a href="regi_form.php">SIGN UP</a></li> ';
+               echo ' <li><a href="login.php">LOG IN</a></li>';
+             }
+             else{
+               echo '<li><a href = "UserPage.php">'.$u.' Profile</a></li>';
+             }
+               ?>
              </ul>
            </div>
            <!--/.nav-collapse -->
@@ -99,7 +124,8 @@ footer{
         <input type= "password" class= "form-control" id="confirmpassword" name="confirmpassword" required="required" placeholder="Confirm Password">
       </div>
 
-        <a href="regi_form2.php" class= "btn btn-default bth-lg" role="button">Submit</a>
+      <button type="submit" class = "btn btn-default bth-log" >Submit Info</button>
+
 
       </form>
      </div>

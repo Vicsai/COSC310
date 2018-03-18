@@ -12,6 +12,7 @@ $u = $_SESSION['user'];
 }
 
  ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -70,7 +71,6 @@ h5{
   color: black;
 }
 </style>
-
 <div class="container">
  <nav class="navbar navbar-inverse">
    <div class="container-fluid">
@@ -86,17 +86,17 @@ h5{
      </div>
      <div id="navbar1" class="navbar-collapse collapse">
        <ul class="nav navbar-nav navbar-right">
-         <li><a href="howitworks.php">How it Works</a></li>
-         <li><a href="about.php">About Us</a></li>
-         <?php
-         if(!$isLoggedIn){
-         echo ' <li><a href="regi_form.php">SIGN UP</a></li> ';
-         echo ' <li><a href="login.php">LOG IN</a></li>';
-       }
-       else{
-         echo '<li><a href = "UserPage.php">'.$u.' Profile</a></li>';
-       }
-         ?>
+				 <li><a href="howitworks.php">How it Works</a></li>
+				 <li><a href="about.php">About Us</a></li>
+				 <?php
+				 if(!$isLoggedIn){
+				 echo ' <li><a href="regi_form.php">SIGN UP</a></li> ';
+				 echo ' <li><a href="login.php">LOG IN</a></li>';
+			 }
+			 else{
+				 echo '<li><a href = "UserPage.php">'.$u.' Profile</a></li>';
+			 }
+				 ?>
        </ul>
      </div>]
      <!--/.nav-collapse -->
@@ -106,45 +106,15 @@ h5{
 </div>
 
 <div class= page-header>
-   <img src="images/title.png" width="700">
-</div>
-
-<div class=jumbotron>
-  <p>Want to take control of your financies like a boss?</p>
-  <p>Make your money work for you?</p>
-  <p>Sign up today.</p>
-  <img src="images/piggy.png" height="100">
+   <h1>How It Works</h1>
 </div>
 
 
-<h3 class="aline"> Changing the way you manage your money forever. </h3>
 
-<div class="reviews" class="container-fluid text-center text-md-left">
-  <div class="row">
 
-          <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
-            <img src="images/person1.png" width="80" height="80">
-            <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Raven</h5>
-            <p>"Moola Control is an easy and effective way to manage my money. I can easily add my expenses manually and it will show my spending with graphs" </p>
-          </div>
 
-          <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
-            <img src="images/person2.png" width="80" height="80">
-            <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Raj</h5>
-            <p>"This website helped me pay off all my student debt in no time. I just pressed a few buttons, and it showed me needed to be done. Real eye opener.Thanks Moola Control."</p>
 
-          </div>
 
-          <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
-            <img src="images/person3.png" width="80" height="80">
-            <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Emily</h5>
-            <p>"So easy to use! And all the features are amazing. Moola Control helps me run my local business. I have seen major improvements since signing up!"</p>
-          </div>
-
-      </div>
-
-    </div>
-  </div>
 
 
 

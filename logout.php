@@ -1,7 +1,9 @@
 <?php
 session_start();
-if(session_destroy()){
-	print("logged out");
-	header("location: homepage.php");
-}
+session_unset();
+session_destroy();
+
+header('Location: homepage.php');
+
+exit();
 ?>
