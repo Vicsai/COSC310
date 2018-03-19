@@ -17,6 +17,7 @@ $u = $_SESSION['user'];
 $years = array();
 //$year = 2017;
 if($stmt=$con->prepare("SELECT DISTINCT year FROM finances WHERE username = ?")){
+$username=$_SESSION['currentUser'];
 $stmt->bind_param("s",$username);
 $username=$u;
 //set username to session attribute

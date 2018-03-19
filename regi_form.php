@@ -124,6 +124,7 @@ footer{
         <input type= "password" class= "form-control" id="confirmpassword" name="confirmpassword" required="required" placeholder="Confirm Password">
       </div>
 
+
       <button type="submit" class = "btn btn-default bth-log" >Submit Info</button>
 
 

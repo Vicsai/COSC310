@@ -1,10 +1,9 @@
 <?php
+session_start();
 $con=new mysqli('localhost','octo','w3b7ysX6','octo');
 if($con->connect_error){
 	die("Connection failed");
 }
-
-
 
 $exists = false;
 
@@ -52,10 +51,4 @@ $exists = false;
        echo "<h1>Incorrect Login Info <a href = \"login.php\">try again</a></h1>";
     //
      }
-
-
-
-
-
-
 ?>

@@ -1,9 +1,27 @@
 <?php
+<<<<<<< HEAD
+
+// $con = new mysqli('localhost','octo','w3b7ysX6','octo');
+//
+//
+//
+// if($con ->connect_error){
+//     die("Connection failed". $con->connect_error);
+// }
+//
+=======
+>>>>>>> master
 $con=new mysqli('localhost','octo','w3b7ysX6','octo');
 if($con->connect_error){
 	die("Connection failed");
 }
 
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
+}
 session_start();
 $isLoggedIn = false;
 if(isset($_SESSION['user'])){
@@ -16,6 +34,7 @@ $rent =0;
 $food =0;
 $clothing =0;
 $entertainment=0;
+$savings=0;
 $income=0;
 
 if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainment) ,SUM(income) FROM finances WHERE username=?  and year = ?" )){
@@ -30,6 +49,7 @@ if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainm
         $food = $b;
         $clothing = $c;
         $entertainment =$d;
+        $savings=$e-($a+$b+$c+$d);
         $income = $e;
 
         }
@@ -50,6 +70,7 @@ if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainm
   $foodB =0;
   $clothingB =0;
   $entertainmentB=0;
+  $savingsB=0;
   $incomeB=0;
 
   if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainment) ,SUM(income) FROM budget WHERE username=?  and year = ?" )){
@@ -64,6 +85,7 @@ if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainm
           $foodB = $b;
           $clothingB = $c;
           $entertainmentB =$d;
+          $savingsB=$e-($a+$b+$c+$d);
           $incomeB = $e;
 
           }
@@ -98,12 +120,14 @@ var rent = <?php echo $rent?>;
 var food = <?php echo $food?>;
 var clothing = <?php echo $clothing?>;
 var entertainment = <?php echo $entertainment?>;
+var savings=<?php echo $savings?>;
 var income = <?php echo $income?>;
 
 var rentB = <?php echo $rentB ?>;
 var foodB = <?php echo $foodB ?>;
 var clothingB = <?php echo $clothingB ?>;
 var entertainmentB= <?php echo $entertainmentB?>;
+var savingsB=<?php echo $savingsB?>;
 var incomeB = <?php echo $incomeB?>;
 
 var year = <?php echo $year?>;
@@ -113,8 +137,8 @@ var bdcolor = "";
 var sum = 0 ;
 var sumB = 0 ;
 
-var finances = [rent,food,clothing,entertainment];
-var financesB = [rentB,foodB,clothingB,entertainmentB];
+var finances = [rent,food,clothing,entertainment,savings];
+var financesB = [rentB,foodB,clothingB,entertainmentB,savingsB];
 
 var max = Math.max.apply(Math,finances);
 var min = Math.min.apply(Math,finances);
@@ -153,13 +177,13 @@ var ctx = document.getElementById('myChart').getContext('2d');
 
     // The data for our dataset
     var chartData= {
-        labels: ["Rent", "Food", "Clothing","Entertainment","Total","Income"],
+        labels: ["Rent", "Food", "Clothing","Entertainment","Savings","Total","Income"],
         datasets: [
           {
           type:'line',
             label: 'Amount in CAD (Budget)',
             borderWidth: 2,
-            data: [rentB, foodB,clothingB,entertainmentB,sumB,incomeB],
+            data: [rentB, foodB,clothingB,entertainmentB,savingsB,sumB,incomeB],
             fill: false,
             borderColor:'rgba(70,70,80,.8)',
             lineTension: 0,
@@ -185,7 +209,7 @@ var ctx = document.getElementById('myChart').getContext('2d');
               'rgba(0, 255, 128,.6)'
           ],
           borderWidth:1,
-          data: [rent, food,clothing,entertainment,sum,income]
+          data: [rent, food,clothing,entertainment,savingsB,sum,income]
 
     }]
 
