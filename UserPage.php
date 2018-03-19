@@ -50,10 +50,12 @@ footer{
   <header>
 
 
+
     <div class="container">
      <nav class="navbar navbar-inverse">
        <div class="container-fluid">
          <div class="navbar-header">
+
            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
              <span class="sr-only">Toggle navigation</span>
              <span class="icon-bar"></span>
@@ -99,10 +101,6 @@ footer{
 </body>
 
   <footer  class="page-footer font-small stylish-color-dark pt-4 mt-4">
-
-
-
-
 
     <div class="container-fluid text-center text-md-left">
 
