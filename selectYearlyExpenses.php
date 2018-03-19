@@ -1,9 +1,36 @@
+<?php
+
+$con = new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con ->connect_error){
+    die("Connection failed". $con->connect_error);}
+
+$years = array();
+//$year = 2017;
+if($stmt=$con->prepare("SELECT DISTINCT year FROM finances WHERE username = ?")){
+$stmt->bind_param("s",$username);
+$username='davidLevi';
+//set username to session attribute
+$stmt->execute();
+$stmt->bind_result($a);
+while($stmt->fetch()){
+	//echo $a;
+array_push($years,$a);
+}
+$stmt->close();
+// for($i = 0; $i < count($years); $i++){
+// 	echo $years[$i];
+// }
+}
+?>
+
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Add Here:</title>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width = device-width, initial-scale = 1">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<title>Yearly Expenses</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="addExpense.css">
 </head>
 <style>
 h1{
@@ -61,55 +88,60 @@ footer{
 }
 
 </style>
+
 <body>
 
-	    <div class="container">
-	     <nav class="navbar navbar-inverse">
-	       <div class="container-fluid">
-	         <div class="navbar-header">
-	           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
-	             <span class="sr-only">Toggle navigation</span>
-	             <span class="icon-bar"></span>
-	             <span class="icon-bar"></span>
-	             <span class="icon-bar"></span>
-	           </button>
-	           <a href="homepage.php"><img src="images/mc_logo.png" width="100" height="50" alt="logo">
-	           </a>
-	         </div>
-	         <div id="navbar1" class="navbar-collapse collapse">
-	           <ul class="nav navbar-nav navbar-right">
-	             <li><a href="homepage.php">LOG OUT</a></li>
-	           </ul>
-	         </div>
-	         <!--/.nav-collapse -->
-	       </div>
-	       <!--/.container-fluid -->
-	     </nav>
-	    </div>
+      <div class="container">
+       <nav class="navbar navbar-inverse">
+         <div class="container-fluid">
+           <div class="navbar-header">
+             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+             </button>
+             <a href="homepage.php"><img src="images/mc_logo.png" width="100" height="50" alt="logo">
+             </a>
+           </div>
+           <div id="navbar1" class="navbar-collapse collapse">
+             <ul class="nav navbar-nav navbar-right">
+               <li><a href="homepage.php">LOG OUT</a></li>
+             </ul>
+           </div>
+           <!--/.nav-collapse -->
+         </div>
+         <!--/.container-fluid -->
+       </nav>
+      </div>
 
 <div class=jumbotron>
-    <form class="pageform" action="uploadFile.php" method="post" enctype="multipart/form-data">
-        <h3>Select your CSV file:</h3><br>
-        <input type="file" name="uploadFile" id="uploadFile">
-        <input type="submit" class="btn btn-success" value="Submit" name="submit">
-    </form>
+
+    <h3>Select the Year:</h3><br>
+<form method = "post" action = "viewYearlyExpenses.php">
+
+<select class= "form-control" name = "year">
+<?php
+for($i = 0; $i < count($years); $i++){
+	echo '<option>'.$years[$i].'</option>';
+}
+?>
+
+</select></br>
+  <input type="submit" class="btn btn-success" value="Submit">
+	</form>
 </div>
 
+
+
 </body>
-
-
 <footer  class="page-footer font-small stylish-color-dark pt-4 mt-4">
-
-
   <div class="container-fluid text-center text-md-left">
-
     <div class="row">
-
         <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
           <p></p>
            <a href="homepage.php"><img src="images/mc_logo.png" width="100" height="50" alt="logo"></a>
         </div>
-
         <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
           <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Moola Control</h5>
              <ul class="list-unstyled">
@@ -119,7 +151,6 @@ footer{
                     <li><a href="#!">Careers</a></li>
             </ul>
         </div>
-
         <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
           <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Contact</h5>
 
@@ -129,7 +160,6 @@ footer{
 
               </ul>
         </div>
-
         <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
           <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Connect</h5>
                <ul class="list-unstyled">
@@ -138,11 +168,8 @@ footer{
                       <li><a href="#!">Google Plus</a></li>
               </ul>
         </div>
-
     </div>
-
    <hr>
-
     <div class="text-center py-3">
           <ul class="list-unstyled list-inline mb-0">
               <li class="list-inline-item">
@@ -159,4 +186,5 @@ footer{
     </div>
   </div>
 </footer>
+
 </html>
