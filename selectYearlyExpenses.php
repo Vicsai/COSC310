@@ -120,9 +120,19 @@ footer{
              </a>
            </div>
            <div id="navbar1" class="navbar-collapse collapse">
-             <ul class="nav navbar-nav navbar-right">
-               <li><a href="homepage.php">LOG OUT</a></li>
-             </ul>
+						 <ul class="nav navbar-nav navbar-right">
+							 <li><a href="howitworks.php">How it Works</a></li>
+							 <li><a href="about.php">About Us</a></li>
+	             <?php
+							 if(!$isLoggedIn){
+							 echo ' <li><a href="regi_form.php">SIGN UP</a></li> ';
+							 echo ' <li><a href="login.php">LOG IN</a></li>';
+						 }
+						 else{
+							 echo '<li><a href = "UserPage.php">'.$u.' Profile</a></li>';
+						 }
+							 ?>
+	           </ul>
            </div>
            <!--/.nav-collapse -->
          </div>

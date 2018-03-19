@@ -2,19 +2,19 @@
 include("sessionCheck.php");
 ?>
 <html>
-   
+
    <head>
       <title>Welcome</title>
    </head>
-   
+
    <body>
-    <h1>Welcome <?php 
+    <h1>Welcome <?php
     	if(!(empty($currentUser)))
-       		print("$currentUser"); 
+       		print("$currentUser");
    		else
    			header("location:login.html");
-   	?></h1> 
+   	?></h1>
       <h2><a href = "logout.php">Sign Out</a></h2>
    </body>
-   
+
 </html>
