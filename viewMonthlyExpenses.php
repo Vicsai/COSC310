@@ -28,7 +28,7 @@ $data = false;
 $year = 0;
 if($stmt=$con->prepare("SELECT rent,food,clothing,entertainment,income FROM finances WHERE username=? and month = ? and year = ?" )){
         $stmt->bind_param("ssi",$username,$month,$year);
-        $username='davidLevi';
+        $username=$u;
         //set username to session attribute
         $month = $_POST['month'];
         $year = $_POST['year'];
@@ -86,7 +86,7 @@ var bdcolor = "";
 var sum = 0 ;
 
 
-var finances = [rent,food,clothing,entertainment];
+var finances = [rent,food,clothing,entertainment,savings];
 
 var max = Math.max.apply(Math,finances);
 var min = Math.min.apply(Math,finances);
@@ -120,7 +120,7 @@ var chart = new Chart(ctx, {
 
     // The data for our dataset
     data: {
-        labels: ["Rent", "Food", "Clothing","Entertainment","Total","Income"],
+        labels: ["Rent", "Food", "Clothing","Entertainment","Savings","Total","Income"],
         datasets: [{
             label: "Amount in CAD",
             backgroundColor: [
@@ -140,7 +140,7 @@ var chart = new Chart(ctx, {
               'rgba(0, 255, 128,.6)'
           ],
             borderWidth: 1,
-            data: [rent, food,clothing,entertainment,sum,income],
+            data: [rent, food,clothing,entertainment,savings,sum,income],
 
         }]
     },
