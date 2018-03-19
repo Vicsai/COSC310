@@ -1,13 +1,23 @@
 <?php
-$con = new mysqli('localhost','root',"",'cosc310');
-	if($con ->connect_error){
-    die("Connection failed". $con->connect_error);}
+$con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
+
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
+}
+
+
 
 $years = array();
 $year = 2017;
 if($stmt=$con->prepare("SELECT DISTINCT year FROM finances WHERE username = ?")){
 $stmt->bind_param("s",$username);
-$username='test';
+$username=$u;
 //set username to session attribute
 $stmt->execute();
 $stmt->bind_result($a);

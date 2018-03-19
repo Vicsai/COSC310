@@ -1,14 +1,25 @@
 <?php
+$con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
 
-$con = new mysqli('localhost','root',"",'cosc310');
-if($con ->connect_error){
-    die("Connection failed". $con->connect_error);}
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
+
+}
+?>
+
+<?php
 
 $years = array();
 $year = 2017;
 if($stmt=$con->prepare("SELECT DISTINCT year FROM finances WHERE username = ?")){
 $stmt->bind_param("s",$username);
-$username='test';
+$username=$u;
 //set username to session attribute
 $stmt->execute();
 $stmt->bind_result($a);
@@ -16,10 +27,11 @@ while($stmt->fetch()){
 	//echo $a;
 array_push($years,$a);
 }
-$stmt->close();
+
 // for($i = 0; $i < count($years); $i++){
 // 	echo $years[$i];
 // }
+$stmt->close();
 }
 
 ?>
@@ -87,8 +99,10 @@ footer{
   margin-bottom: 10%;
 }
 
+
 </style>
 <body>
+
 
       <div class="container">
        <nav class="navbar navbar-inverse">
@@ -148,6 +162,7 @@ for($i = 0; $i < count($years); $i++){
 	</form>
 </div>
 </body>
+
 
 
 <footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
