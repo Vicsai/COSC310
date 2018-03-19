@@ -1,7 +1,3 @@
-<?php
-session_start();
-print($_SESSION['currentUser']);
-?>
 <!DOCTYPE html>
 <html>
 
@@ -71,7 +67,7 @@ footer{
          </div>
          <div id="navbar1" class="navbar-collapse collapse">
            <ul class="nav navbar-nav navbar-right">
-             <li><a href="logout.php">LOG OUT</a></li>
+             <li><a href="homepage.php">LOG OUT</a></li>
            </ul>
          </div>
          <!--/.nav-collapse -->
@@ -89,7 +85,8 @@ footer{
 
   <div class=insert>
   <a href="uploadPage.html" button type="button" class="btn btn-default">Link to Bank</button></a>
-  <a href="addExpense.php" button type="button" class="btn btn-default">Manually Add</button></a></br>
+  <a href="addExpense.php" button type="button" class="btn btn-default">Add Expense</button></a></br>
+  <a href="addBudget.php" button type="button" class="btn btn-default">Create Budget</button></a></br>
 </div>
   <div class=insert2>
     <a href="selectBudget.php"><button type="button" class="btn btn-sample btn-lg ">View Budget</button></a>
