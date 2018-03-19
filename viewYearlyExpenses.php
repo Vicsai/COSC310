@@ -1,5 +1,5 @@
-
 <?php
+<<<<<<< HEAD
 
 // $con = new mysqli('localhost','octo','w3b7ysX6','octo');
 //
@@ -9,10 +9,18 @@
 //     die("Connection failed". $con->connect_error);
 // }
 //
+=======
+>>>>>>> master
 $con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
 
-if($con ->connect_error){
-    die("Connection failed". $con->connect_error);
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
 }
 session_start();
 $isLoggedIn = false;
@@ -48,10 +56,6 @@ if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainm
 
 
 
-        else{
-
-        echo "Error inserting user" . $con->error;
-        }
 
 
         $stmt->close();
@@ -88,10 +92,7 @@ if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainm
 
 
 
-          else{
 
-          echo "Error inserting user" . $con->error;
-          }
 
 
           $stmt->close();

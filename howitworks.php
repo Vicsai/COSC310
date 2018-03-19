@@ -1,3 +1,18 @@
+<?php
+$con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
+
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -71,11 +86,17 @@ h5{
      </div>
      <div id="navbar1" class="navbar-collapse collapse">
        <ul class="nav navbar-nav navbar-right">
-         <li><a href="howitworks.html">How it Works</a></li>
-         <li><a href="about.html">About Us</a></li>
-         <li><a href="regi_form.php">SIGN UP</a></li>
-         <li> <a href="login.php">LOG IN</a></li>
-
+				 <li><a href="howitworks.php">How it Works</a></li>
+				 <li><a href="about.php">About Us</a></li>
+				 <?php
+				 if(!$isLoggedIn){
+				 echo ' <li><a href="regi_form.php">SIGN UP</a></li> ';
+				 echo ' <li><a href="login.php">LOG IN</a></li>';
+			 }
+			 else{
+				 echo '<li><a href = "UserPage.php">'.$u.' Profile</a></li>';
+			 }
+				 ?>
        </ul>
      </div>]
      <!--/.nav-collapse -->

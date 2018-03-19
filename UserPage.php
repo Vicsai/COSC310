@@ -54,10 +54,12 @@ footer{
   <header>
 
 
+
     <div class="container">
      <nav class="navbar navbar-inverse">
        <div class="container-fluid">
          <div class="navbar-header">
+
            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
              <span class="sr-only">Toggle navigation</span>
              <span class="icon-bar"></span>
@@ -69,7 +71,7 @@ footer{
          </div>
          <div id="navbar1" class="navbar-collapse collapse">
            <ul class="nav navbar-nav navbar-right">
-             <li><a href="homepage.php">LOG OUT</a></li>
+             <li><a href="logout.php">LOG OUT</a></li>
            </ul>
          </div>
          <!--/.nav-collapse -->
@@ -103,10 +105,6 @@ footer{
 </body>
 
   <footer  class="page-footer font-small stylish-color-dark pt-4 mt-4">
-
-
-
-
 
     <div class="container-fluid text-center text-md-left">
 

@@ -1,9 +1,21 @@
 
 <?php
+$con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
 
+<<<<<<< HEAD
 $con = new mysqli('localhost','octo','w3b7ysX6','octo');
 if($con ->connect_error){
     die("Connection failed". $con->connect_error);
+=======
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
+>>>>>>> master
 }
 session_start();
 $isLoggedIn = false;
@@ -29,7 +41,7 @@ if($stmt=$con->prepare("SELECT rent,food,clothing,entertainment,income FROM fina
         $year = $_POST['year'];
         $stmt->execute();
         $stmt->bind_result($a,$b,$c,$d,$e);
-        if($stmt->fetch()){
+        while($stmt->fetch()){
         $rent = $a;
         $food = $b;
         $clothing = $c;
@@ -41,8 +53,8 @@ if($stmt=$con->prepare("SELECT rent,food,clothing,entertainment,income FROM fina
 
         }
 
-        else{
-          $m = 'Month has no data';
+        if(!$data){
+          $m = 'Month has no ';
 
         }
 
