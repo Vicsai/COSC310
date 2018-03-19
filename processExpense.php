@@ -1,13 +1,13 @@
 <?php
-
-$con = new mysqli('localhost','root',"",'cosc310');
+session_start();
+$con = new mysqli('localhost','octo',"w3b7ysX6",'octo');
 $category = $_POST['category'];
 $amount = intval($_POST['amount']);
 $sql = 'UPDATE finances SET '.$category.'='.$category.'+'.$amount.' WHERE username = ? and month = ? and year = ?';
 echo $sql;
 if($stmt=$con->prepare($sql )){
         $stmt->bind_param("ssi",$username,$month,$year);
-        $username='test';
+        $username=$_SESSION['user'];
         //set username to session attribute
         $month = $_POST['month'];
         $year = $_POST['year'];
