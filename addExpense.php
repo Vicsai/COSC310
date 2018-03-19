@@ -119,6 +119,7 @@ footer{
 	<form method = "post" action = "processExpense.php">
 
  	 <input type="text" name="amount" placeholder="Enter Amount Here" >
+
   <br>
    <select name ="category">
    <option disabled>Choose Expense</option>
@@ -147,13 +148,13 @@ footer{
   <br>
 	<select name = "year">
 
-		
 	<?php
 	for($i = 0; $i < count($years); $i++){
 		echo '<option>'.$years[$i].'</option>';
 	}
 		?>
 	</select>
+
   <input type="submit" class="btn btn-success" value="Submit">
 	</form>
 
@@ -221,5 +222,6 @@ footer{
 		</div>
 	</div>
 </footer>
+
 
 </html>

@@ -116,6 +116,7 @@ footer{
 
 <div class=jumbotron>
 <form method = "post" action = "viewMonthlyExpenses.php">
+
 <select name = "month">
    <option disabled>Choose Month</option>
   <option >January</option>
@@ -139,6 +140,7 @@ footer{
 for($i = 0; $i < count($years); $i++){
 	echo '<option>'.$years[$i].'</option>';
 }
+
 ?>
 
 </select>

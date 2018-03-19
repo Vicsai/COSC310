@@ -20,19 +20,23 @@ $stmt->close();
 // 	echo $years[$i];
 // }
 }
-?>
 
+
+
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Monthly Expenses</title>
+	<title>Add Expense</title>
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width = device-width, initial-scale = 1">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="addExpense.css">
 </head>
 <style>
+
 h1{
   text-align: center;
 }
@@ -124,6 +128,7 @@ footer{
 <form method = "post" action = "viewMonthlyExpenses.php">
 
 <select class= "form-control form-control-lg" name = "month">
+
    <option disabled>Choose Month</option>
   <option >January</option>
   <option >February</option>
@@ -137,16 +142,19 @@ footer{
   <option >October</option>
   <option >November</option>
   <option >December</option>
+
   </select>
   <br>
 
 
 <select class= "form-control" name = "year">
+
 <?php
 for($i = 0; $i < count($years); $i++){
 	echo '<option>'.$years[$i].'</option>';
 }
 	?>
+
 
 </select></br>
 
@@ -219,4 +227,5 @@ for($i = 0; $i < count($years); $i++){
     </div>
   </div>
 </footer>
+
 </html>
