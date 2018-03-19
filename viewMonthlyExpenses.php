@@ -29,7 +29,7 @@ if($stmt=$con->prepare("SELECT rent,food,clothing,entertainment,income FROM fina
         $year = $_POST['year'];
         $stmt->execute();
         $stmt->bind_result($a,$b,$c,$d,$e);
-        if($stmt->fetch()){
+        while($stmt->fetch()){
         $rent = $a;
         $food = $b;
         $clothing = $c;
@@ -41,8 +41,8 @@ if($stmt=$con->prepare("SELECT rent,food,clothing,entertainment,income FROM fina
 
         }
 
-        else{
-          $m = 'Month has no data';
+        if(!$data){
+          $m = 'Month has no ';
 
         }
 

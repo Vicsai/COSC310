@@ -36,10 +36,6 @@ if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainm
 
 
 
-        else{
-
-        echo "Error inserting user" . $con->error;
-        }
 
 
         $stmt->close();
@@ -58,7 +54,7 @@ if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainm
 
   if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainment) ,SUM(income) FROM budget WHERE username=?  and year = ?" )){
           $stmt->bind_param("si",$username,$year);
-          $username='test';
+          $username=$u;
           //set username to session attribute
           $year = $_POST['year'];
           $stmt->execute();
@@ -74,10 +70,7 @@ if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainm
 
 
 
-          else{
 
-          echo "Error inserting user" . $con->error;
-          }
 
 
           $stmt->close();

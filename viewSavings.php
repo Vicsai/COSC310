@@ -28,7 +28,7 @@ if($stmt=$con->prepare("SELECT rent,food,clothing,entertainment,income FROM fina
 while($x < 12){
 
         $stmt->bind_param("ssi",$username,$month,$year);
-        $username=$u;
+        $username='davidLevi';
         //set username to session attribute
         $month =$months[$x];
         //$year = $_POST['year'];
@@ -101,55 +101,55 @@ else{
 
 
 
-// var ctx = document.getElementById('myChart').getContext('2d');
-// var chart = new Chart(ctx, {
-//     // The type of chart we want to create
-//
-//     type: 'bar',
-//
-//     // The data for our dataset
-//     data: {
-//         labels: ["Rent", "Food", "Clothing","Entertainment","Total","Income"],
-//         datasets: [{
-//             label: "Amount in CAD",
-//             backgroundColor: [
-//             'rgba(255, 0, 128,.2)',
-//             'rgba(191, 0, 255,.2)',
-//             'rgba(64, 0, 255,.2)',
-//             'rgba(0, 191, 255,.2)',
-//              color,
-//             'rgba(0, 255, 128,.2)',
-//             ],
-//             borderColor: [
-//               'rgba(255, 0, 128,.6)',
-//               'rgba(191, 0, 255,.6)',
-//               'rgba(64, 0, 255,.6)',
-//               'rgba(0, 191, 255,.6)',
-//               bdcolor,
-//               'rgba(0, 255, 128,.6)'
-//           ],
-//             borderWidth: 1,
-//             data: [rent, food,clothing,entertainment,sum,income],
-//
-//         }]
-//     },
-//
-//     // Configuration options go here
-//       options: {
-//         legend: {display:false},
-//         scales: {
-//             yAxes: [{
-//
-//             }]
-//         },
-//         title: {
-//           display: true,
-//           text: month + ' Finances',
-//           fontSize: 24
-//         }
-//     }
-//
-// });
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: ["Rent", "Food", "Clothing","Entertainment","Total","Income"],
+        datasets: [{
+            label: "Amount in CAD",
+            backgroundColor: [
+            'rgba(255, 0, 128,.2)',
+            'rgba(191, 0, 255,.2)',
+            'rgba(64, 0, 255,.2)',
+            'rgba(0, 191, 255,.2)',
+             color,
+            'rgba(0, 255, 128,.2)',
+            ],
+            borderColor: [
+              'rgba(255, 0, 128,.6)',
+              'rgba(191, 0, 255,.6)',
+              'rgba(64, 0, 255,.6)',
+              'rgba(0, 191, 255,.6)',
+              bdcolor,
+              'rgba(0, 255, 128,.6)'
+          ],
+            borderWidth: 1,
+            data: [rent, food,clothing,entertainment,sum,income],
+
+        }]
+    },
+
+    // Configuration options go here
+      options: {
+        legend: {display:false},
+        scales: {
+            yAxes: [{
+
+            }]
+        },
+        title: {
+          display: true,
+          text: month + ' Finances',
+          fontSize: 24
+        }
+    }
+
+});
 
 
 

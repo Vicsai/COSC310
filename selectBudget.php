@@ -9,6 +9,7 @@ $isLoggedIn = false;
 if(isset($_SESSION['user'])){
 $isLoggedIn =true;
 $u = $_SESSION['user'];
+
 }
 ?>
 
@@ -26,10 +27,11 @@ while($stmt->fetch()){
 	//echo $a;
 array_push($years,$a);
 }
-$stmt->close();
+
 // for($i = 0; $i < count($years); $i++){
 // 	echo $years[$i];
 // }
+$stmt->close();
 }
 
 
@@ -46,7 +48,7 @@ $stmt->close();
 
 
 
-	<form method = "post" action = "viewMonthlyExpenses.php">
+	<form method = "post" action = "viewBudget.php">
 
 
 <select name = "month">
@@ -77,7 +79,6 @@ for($i = 0; $i < count($years); $i++){
 </select>
   <input type="submit" value="Submit">
 	</form>
-
 
 
 </body>
