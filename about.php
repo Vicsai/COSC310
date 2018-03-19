@@ -85,8 +85,8 @@ h5{
      </div>
      <div id="navbar1" class="navbar-collapse collapse">
        <ul class="nav navbar-nav navbar-right">
-         <li><a href="howitworks.html">How it Works</a></li>
-         <li><a href="about.html">About Us</a></li>
+         <li><a href="howitworks.php">How it Works</a></li>
+         <li><a href="about.php">About Us</a></li>
          <li><a href="regi_form.php">SIGN UP</a></li>
          <li> <a href="login.php">LOG IN</a></li>
 
