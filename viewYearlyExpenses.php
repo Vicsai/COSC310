@@ -75,14 +75,7 @@ if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainm
           $entertainmentB =$d;
           $savingsB=$e-($a+$b+$c+$d);
           $incomeB = $e;
-
           }
-
-
-
-
-
-
           $stmt->close();
       }
 
@@ -93,9 +86,6 @@ if($stmt=$con->prepare("SELECT SUM(rent),SUM(food),SUM(clothing) ,SUM(entertainm
     $con->close();
 
 ?>
-
-
-
 
 <canvas id = "myChart"></canvas>
 <canvas id = "myChart2"></canvas>
@@ -153,15 +143,7 @@ else{
   bdcolor = "rgba(0, 255, 0,.6)";
 }
 
-
-
-
-
-
-
 var ctx = document.getElementById('myChart').getContext('2d');
-
-
 
     // The data for our dataset
     var chartData= {
@@ -204,10 +186,6 @@ var ctx = document.getElementById('myChart').getContext('2d');
   };
 
     // Configuration options go here
-
-
-
-
     // window.onload = function(){
 			var ctx = document.getElementById('myChart').getContext('2d');
 			window.myMixedChart = new Chart(ctx, {
