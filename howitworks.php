@@ -1,45 +1,56 @@
+<?php
+$con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
+
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>User Page</title>
+  <title>Home</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width = device-width, initial-scale = 1">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <style>
-h1{
-  text-align: center;
-}
 .jumbotron{
   text-align: center;
   margin-left: 30%;
   margin-right: 30%;
   background-color: #282828;
   color: white;
-  margin-top: 7%;
-  margin-bottom: 7%;
-	padding: 3%;
 }
-.insert{
+.page-header,h3{
   text-align: center;
-  padding-bottom: 5%
 }
-.insert2,.insert3,.insert4{
-  text-align: center;
-  margin-bottom: 5%;
+.logo{
+  height: 4em;
+}
+h1{
+  font-size: 50pt;
 }
 
-insert4{
-  margin-bottom: 10%;
-}
-.btn-sample {
-  color: #ffffff;
-  background-color: #611BBD;
-  border-color: #130269;
-}
 body{
   background-color: #C0C0C0;
+}
+
+.nav-item{
+  padding: 3px 3px;
+  background-color: #282828;
+
+}
+.navbar{
+  background-color: #282828;
 }
 footer{
   background-color: #282828;
@@ -47,71 +58,67 @@ footer{
 .footer_copyright,h5{
   color: white;
 }
-.btn{
+.reviews{
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
   margin-bottom: 5%;
-
 }
-
+.aline{
+  padding-bottom: 5%;
+}
+h5{
+  color: black;
+}
 </style>
-<body>
-  <header>
-    <div class="container">
-     <nav class="navbar navbar-inverse">
-       <div class="container-fluid">
-         <div class="navbar-header">
+<div class="container">
+ <nav class="navbar navbar-inverse">
+   <div class="container-fluid">
+     <div class="navbar-header">
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a href="homepage.php"><img src="images/mc_logo.png" width="100" height="50" alt="logo">
+       </a>
+     </div>
+     <div id="navbar1" class="navbar-collapse collapse">
 
-           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
-             <span class="sr-only">Toggle navigation</span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-           </button>
-           <a href="homepage.php"><img src="images/mc_logo.png" width="100" height="50" alt="logo">
-           </a>
-         </div>
-         <div id="navbar1" class="navbar-collapse collapse">
-           <ul class="nav navbar-nav navbar-right">
-             <li><a href="logout.php">LOG OUT</a></li>
-           </ul>
-         </div>
-         <!--/.nav-collapse -->
-       </div>
-       <!--/.container-fluid -->
-     </nav>
-    </div>
+			 <?php if (!$isLoggedIn): ?>
+       <ul class="nav navbar-nav navbar-right">
+				 <li><a href="howitworks.php">How it Works</a></li>
+				 <li><a href="about.php">About Us</a></li>
+				 <li><a href="regi_form.php">SIGN UP</a></li>
+				 <li><a href="login.php">LOG IN</a></li>
+			 </ul>
+			<?php else: ?>
+				<li><a href="howitworks.php">How it Works</a></li>
+				<li><a href="about.php">About Us</a></li>
+				<li><a href = "UserPage.php">'.$u.' Profile</a></li>
+				<li><a href="logout.php">LOG OUT</a></li>
+       <?php endif; ?>
+     </div>
+     <!--/.nav-collapse -->
+   </div>
+   <!--/.container-fluid -->
+ </nav>
+</div>
 
-    <div class= page-header>
-       <h1>CONTROL YOUR MOOLA</h1>
-    </div>
-
-  </header>
-
-<div class="row">
-  <div class="container">
-    <div class= "jumbotron col-mid-4">
-      	<h3>Manage:</h3><br>
-
-        <a href="uploadPage.html" button type="button" class="btn btn-success">Link to Bank</button></a></br>
-
-        <a href="addExpense.php" button type="button" class="btn btn-success">Add Expense</button></a></br>
-
-        <a href="addBudget.php" button type="button" class="btn btn-success">Create Budget</button></a>
-    </div>
-
-    <div class= "jumbotron col-mid-4">
-    	     <h3>Graphical Representations:</h3><br>
-
-           <a href="selectBudget.php"><button type="button" class="btn btn-sample btn-lg ">Your Budget</button></a></br>
-
-           <a href="selectMonthlyExpenses.php"><button type="button" class="btn btn-sample btn-lg ">Monthly Spending</button></a></br>
-
-           <a href="selectYearlyExpenses.php"><button type="button" class="btn btn-sample btn-lg ">Yearly Spending</button></a></br>
-    </div>
-  </div>
+<div class= page-header>
+   <h1>How It Works</h1>
 </div>
 
 
-</body>
+
+
+
+
+
+
+
+
 
   <footer  class="page-footer font-small stylish-color-dark pt-4 mt-4">
 
@@ -140,7 +147,7 @@ footer{
                  <ul class="list-unstyled">
                       <li><a href="#!">The University of British Columbia Okanagan</a></li>
                       <li><a href="#!">info@moolacontrol.ca</a></li>
-
+              \
                 </ul>
           </div>
 
@@ -173,5 +180,6 @@ footer{
       </div>
     </div>
   </footer>
+
 
 </html>

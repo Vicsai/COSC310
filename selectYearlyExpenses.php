@@ -1,14 +1,25 @@
 <?php
+$con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
 
-$con = new mysqli('localhost','octo','w3b7ysX6','octo');
-if($con ->connect_error){
-    die("Connection failed". $con->connect_error);}
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
+}
+?>
+
+<?php
 
 $years = array();
 //$year = 2017;
 if($stmt=$con->prepare("SELECT DISTINCT year FROM finances WHERE username = ?")){
+$username=$_SESSION['currentUser'];
 $stmt->bind_param("s",$username);
-$username='davidLevi';
+$username=$u;
 //set username to session attribute
 $stmt->execute();
 $stmt->bind_result($a);
@@ -109,9 +120,9 @@ footer{
              </a>
            </div>
            <div id="navbar1" class="navbar-collapse collapse">
-             <ul class="nav navbar-nav navbar-right">
-               <li><a href="homepage.php">LOG OUT</a></li>
-             </ul>
+						 <ul class="nav navbar-nav navbar-right">
+	 						<li><a href="logout.php">LOG OUT</a></li>
+	 					</ul>
            </div>
            <!--/.nav-collapse -->
          </div>
@@ -125,10 +136,11 @@ footer{
 <form method = "post" action = "viewYearlyExpenses.php">
 
 <select class= "form-control" name = "year">
+	<option class="disabled form-control">Choose Year</option>
 
 <?php
 for($i = 0; $i < count($years); $i++){
-	echo '<option>'.$years[$i].'</option>';
+	echo '<option class="form-control">'.$years[$i].'</option>';
 }
 
 ?>

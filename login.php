@@ -1,3 +1,19 @@
+<?php
+$con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
+
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
+}
+
+ ?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -34,7 +50,7 @@ footer{
 }
 .footer_copyright,h5{
   color: white;
-
+}
 
 </style>
 <body>
@@ -55,8 +71,15 @@ footer{
            </a>
          </div>
          <div id="navbar1" class="navbar-collapse collapse">
-           <ul class="nav navbar-nav navbar-right">
-             <li><a href="regi_form.php">SIGN UP</a></li>
+					 <?php if (!$isLoggedIn):
+						 					header(Location: userpage.php);
+						 ?>
+					<?php else: ?>
+						<li><a href="howitworks.php">How it Works</a></li>
+						<li><a href="about.php">About Us</a></li>
+						<li><a href = "UserPage.php">'.$u.' Profile</a></li>
+						<li><a href="logout.php">LOG OUT</a></li>
+		       <?php endif; ?>
            </ul>
          </div>
          <!--/.nav-collapse -->
@@ -77,15 +100,15 @@ footer{
 
 
     <div class="input-group input-group-sm center-block" >
-      <input type= "text" class= "form-control" id="username" name="username" required="required" placeholder="Username">
+      <input type= "text" class= "form-control" id="username" name="username" required="required" placeholder="Username"/>
     </div>
 
 
     <div class="input-group input-group-sm center-block" class="insert2">
-      <input type= "password" class= "form-control" id="password" name="password" required="required" placeholder="Password">
+      <input type= "password" class= "form-control" id="password" name="password" required="required" placeholder="Password"/>
     </div>
 
-    <a href="login2.php" class= "btn btn-default bth-lg" role="button">Submit</a>
+    <button type="submit" class = "btn btn-default bth-log" >Login</button>
 
 
 </form>

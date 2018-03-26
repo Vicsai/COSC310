@@ -1,20 +1,21 @@
 
 <?php
+$con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
 
-$con = new mysqli('localhost','octo','w3b7ysX6','octo');
-//
-//
-//
-// if($con ->connect_error){
-//     die("Connection failed". $con->connect_error);
-// }
-//
-// echo 'Connected Succesfully';
-
-//$con = new mysqli('localhost','root',"",'cosc310');
-
-if($con ->connect_error){
-    die("Connection failed". $con->connect_error);
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
+}
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
 }
 
 
@@ -28,13 +29,13 @@ $data = false;
 $year = 0;
 if($stmt=$con->prepare("SELECT rent,food,clothing,entertainment,income FROM finances WHERE username=? and month = ? and year = ?" )){
         $stmt->bind_param("ssi",$username,$month,$year);
-        $username='davidLevi';
+        $username=$u;
         //set username to session attribute
         $month = $_POST['month'];
         $year = $_POST['year'];
         $stmt->execute();
         $stmt->bind_result($a,$b,$c,$d,$e);
-        if($stmt->fetch()){
+        while($stmt->fetch()){
         $rent = $a;
         $food = $b;
         $clothing = $c;
@@ -46,8 +47,8 @@ if($stmt=$con->prepare("SELECT rent,food,clothing,entertainment,income FROM fina
 
         }
 
-        else{
-          $m = 'Month has no data';
+        if(!$data){
+          $m = 'Month has no ';
 
         }
 
@@ -78,6 +79,7 @@ var food = <?php echo $food?>;
 var clothing = <?php echo $clothing?>;
 var entertainment = <?php echo $entertainment?>;
 var income = <?php echo $income?>;
+var savings=income-(rent+food+clothing+entertainment);
 var month = '<?php echo $m?>';
 
 var color = "";
@@ -85,7 +87,7 @@ var bdcolor = "";
 var sum = 0 ;
 
 
-var finances = [rent,food,clothing,entertainment];
+var finances = [rent,food,clothing,entertainment,savings];
 
 var max = Math.max.apply(Math,finances);
 var min = Math.min.apply(Math,finances);
@@ -119,7 +121,7 @@ var chart = new Chart(ctx, {
 
     // The data for our dataset
     data: {
-        labels: ["Rent", "Food", "Clothing","Entertainment","Total","Income"],
+        labels: ["Rent", "Food", "Clothing","Entertainment","Savings","Total","Income"],
         datasets: [{
             label: "Amount in CAD",
             backgroundColor: [
@@ -139,7 +141,7 @@ var chart = new Chart(ctx, {
               'rgba(0, 255, 128,.6)'
           ],
             borderWidth: 1,
-            data: [rent, food,clothing,entertainment,sum,income],
+            data: [rent, food,clothing,entertainment,savings,sum,income],
 
         }]
     },

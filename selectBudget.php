@@ -1,14 +1,25 @@
 <?php
+$con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
 
-$con = new mysqli('localhost','root',"",'cosc310');
-if($con ->connect_error){
-    die("Connection failed". $con->connect_error);}
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
+
+}
+?>
+
+<?php
 
 $years = array();
 $year = 2017;
 if($stmt=$con->prepare("SELECT DISTINCT year FROM finances WHERE username = ?")){
 $stmt->bind_param("s",$username);
-$username='test';
+$username=$u;
 //set username to session attribute
 $stmt->execute();
 $stmt->bind_result($a);
@@ -16,10 +27,11 @@ while($stmt->fetch()){
 	//echo $a;
 array_push($years,$a);
 }
-$stmt->close();
+
 // for($i = 0; $i < count($years); $i++){
 // 	echo $years[$i];
 // }
+$stmt->close();
 }
 
 ?>
@@ -85,10 +97,13 @@ footer{
   color: white;
   margin-top: 10%;
   margin-bottom: 10%;
+	padding: 5%;
 }
+
 
 </style>
 <body>
+
 
       <div class="container">
        <nav class="navbar navbar-inverse">
@@ -104,9 +119,9 @@ footer{
              </a>
            </div>
            <div id="navbar1" class="navbar-collapse collapse">
-             <ul class="nav navbar-nav navbar-right">
-               <li><a href="homepage.php">LOG OUT</a></li>
-             </ul>
+						 <ul class="nav navbar-nav navbar-right">
+	             <li><a href="logout.php">LOG OUT</a></li>
+	           </ul>
            </div>
            <!--/.nav-collapse -->
          </div>
@@ -116,26 +131,29 @@ footer{
 
 <div class=jumbotron>
 <form method = "post" action = "viewMonthlyExpenses.php">
+	  <h3>View Budget:</h3><br>
 
-<select name = "month">
-   <option disabled>Choose Month</option>
-  <option >January</option>
-  <option >February</option>
-  <option >March</option>
-  <option >April</option>
-  <option >May</option>
-  <option >June</option>
-  <option >July</option>
-  <option >August</option>
-  <option >September</option>
-  <option >October</option>
-  <option >November</option>
-  <option >December</option>
+<select name = "month" class= "form-control">
+   <option class="disabled form-control">Choose Month</option>
+  <option class= "form-control">January</option>
+  <option class= "form-control">February</option>
+  <option class= "form-control" >March</option>
+  <option class= "form-control">April</option>
+  <option class= "form-control">May</option>
+  <option class= "form-control">June</option>
+  <option class= "form-control">July</option>
+  <option class= "form-control">August</option>
+  <option class= "form-control">September</option>
+  <option class= "form-control">October</option>
+  <option class= "form-control">November</option>
+  <option class= "form-control">December</option>
 </select>
   <br>
 
 
-<select name = "year">
+<select name = "year" class= "form-control">
+	<option class="disabled form-control">Choose Year</option></br>
+
 <?php
 for($i = 0; $i < count($years); $i++){
 	echo '<option>'.$years[$i].'</option>';
@@ -144,10 +162,11 @@ for($i = 0; $i < count($years); $i++){
 ?>
 
 </select>
-  <input type="submit" class="btn btn-success" value="Submit">
+    <input type="submit" class="btn btn-success" value="Submit">
 	</form>
 </div>
 </body>
+
 
 
 <footer class="page-footer font-small stylish-color-dark pt-4 mt-4">

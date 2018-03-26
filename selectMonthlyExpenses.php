@@ -1,13 +1,24 @@
 <?php
 $con=new mysqli('localhost','octo','w3b7ysX6','octo');
-if($con ->connect_error){
-    die("Connection failed". $con->connect_error);}
+if($con->connect_error){
+	die("Connection failed");
+}
+
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
+}
+?>
+
+<?php
 
 $years = array();
 $year = 2017;
 if($stmt=$con->prepare("SELECT DISTINCT year FROM finances WHERE username = ? ")){
 $stmt->bind_param("s",$username);
-$username='davidLevi';
+$username=$u;
 //set username to session attribute
 $stmt->execute();
 $stmt->bind_result($a);
@@ -110,9 +121,9 @@ footer{
              </a>
            </div>
            <div id="navbar1" class="navbar-collapse collapse">
-             <ul class="nav navbar-nav navbar-right">
-               <li><a href="homepage.php">LOG OUT</a></li>
-             </ul>
+						 <ul class="nav navbar-nav navbar-right">
+ 							<li><a href="logout.php">LOG OUT</a></li>
+ 						</ul>
            </div>
            <!--/.nav-collapse -->
          </div>
@@ -129,25 +140,26 @@ footer{
 
 <select class= "form-control form-control-lg" name = "month">
 
-   <option disabled>Choose Month</option>
-  <option >January</option>
-  <option >February</option>
-  <option >March</option>
-  <option >April</option>
-  <option >May</option>
-  <option >June</option>
-  <option >July</option>
-  <option >August</option>
-  <option >September</option>
-  <option >October</option>
-  <option >November</option>
-  <option >December</option>
+   <option class="disabled form-control">Choose Month</option>
+  <option class="form-control">January</option>
+  <option class="form-control">February</option>
+  <option class="form-control">March</option>
+  <option class="form-control">April</option>
+  <option class="form-control">May</option>
+  <option class="form-control">June</option>
+  <option class="form-control">July</option>
+  <option class="form-control">August</option>
+  <option class="form-control">September</option>
+  <option class="form-control">October</option>
+  <option class="form-control">November</option>
+  <option class="form-control">December</option>
 
   </select>
   <br>
 
 
 <select class= "form-control" name = "year">
+	<option class="disabled form-control">Choose Year</option>
 
 <?php
 for($i = 0; $i < count($years); $i++){

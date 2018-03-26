@@ -1,13 +1,23 @@
 <?php
-$con = new mysqli('localhost','root',"",'cosc310');
-	if($con ->connect_error){
-    die("Connection failed". $con->connect_error);}
+$con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
+
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
+}
+
+
 
 $years = array();
 $year = 2017;
 if($stmt=$con->prepare("SELECT DISTINCT year FROM finances WHERE username = ?")){
 $stmt->bind_param("s",$username);
-$username='test';
+$username=$u;
 //set username to session attribute
 $stmt->execute();
 $stmt->bind_result($a);
@@ -26,7 +36,6 @@ $stmt->close();
 <!DOCTYPE html>
 <html>
 <head>
-		<title>Add Here:</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width = device-width, initial-scale = 1">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -83,6 +92,7 @@ footer{
   color: white;
   margin-top: 10%;
   margin-bottom: 10%;
+	padding: 5%;
 }
 
 </style>
@@ -103,9 +113,9 @@ footer{
 	           </a>
 	         </div>
 	         <div id="navbar1" class="navbar-collapse collapse">
-	           <ul class="nav navbar-nav navbar-right">
-	             <li><a href="homepage.php">LOG OUT</a></li>
-	           </ul>
+						 <ul class="nav navbar-nav navbar-right">
+						 	<li><a href="logout.php">LOG OUT</a></li>
+						 </ul>
 	         </div>
 	         <!--/.nav-collapse -->
 	       </div>
@@ -114,46 +124,49 @@ footer{
 	    </div>
 
 
-<div classs=jumbotron>
+<div class=jumbotron>
 
 	<form method = "post" action = "processExpense.php">
+		  <h3>Add Expense:</h3><br>
 
- 	 <input type="text" name="amount" placeholder="Enter Amount Here" >
+ 	 <input type="text" name="amount" placeholder="Enter Amount Here" class="form-control">
 
   <br>
-   <select name ="category">
-   <option disabled>Choose Expense</option>
-  <option >food</option>
-  <option >rent</option>
-  <option >clothing</option>
-	<option>entertainment</option>
-	<option>income</option>
+   <select name ="category" class= "form-control">
+   <option class="disabled form-control">Choose Expense</option>
+  <option class="form-control">food</option>
+  <option class="form-control">rent</option>
+  <option class="form-control">clothing</option>
+	<option class="form-control">entertainment</option>
+	<option cclass="form-control">income</option>
 </select>
   <br>
-<select name = "month">
-   <option disabled>Choose Month</option>
-  <option >January</option>
-  <option >February</option>
-  <option >March</option>
-  <option >April</option>
-  <option >May</option>
-  <option >June</option>
-  <option >July</option>
-  <option >August</option>
-  <option >September</option>
-  <option >October</option>
-  <option >November</option>
-  <option >December</option>
+
+<select name = "month" class= "form-control">
+   <option class=" disabled form-control">Choose Month</option>
+  <option class="form-control" >January</option>
+  <option class="form-control">February</option>
+  <option class="form-control">March</option>
+  <option class="form-control">April</option>
+  <option class="form-control">May</option>
+  <option class="form-control">June</option>
+  <option class="form-control">July</option>
+  <option class="form-control" >August</option>
+  <option class="form-control">September</option>
+  <option class="form-control">October</option>
+  <option class="form-control">November</option>
+  <option class="form-control">December</option>
 </select>
   <br>
-	<select name = "year">
 
+	<select name = "year" class="form-control">
+   <option class=" disabled form-control">Choose Year</option>
 	<?php
 	for($i = 0; $i < count($years); $i++){
-		echo '<option>'.$years[$i].'</option>';
+		echo '<option class="form-control">'.$years[$i].'</option>';
 	}
 		?>
-	</select>
+	</select></br>
 
   <input type="submit" class="btn btn-success" value="Submit">
 	</form>
