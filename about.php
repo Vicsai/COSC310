@@ -69,6 +69,29 @@ footer{
 h5{
   color: black;
 }
+table{
+	width: 100%;
+	padding-left: 20%;
+	padding-right: 20%;
+	align-items: center;
+	align-content: center;
+	text-align: center;
+	margin-bottom: 10%;
+}
+.pic{
+	align-items: center;
+	align-content: center;
+	text-align: center;
+
+}
+
+.picturesrow{
+	align-items: center;
+	align-content: center;
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 10%;
+}
 </style>
 <div class="container">
  <nav class="navbar navbar-inverse">
@@ -109,7 +132,49 @@ h5{
 </div>
 
 
+<table class="picturestable">
+	<tr class="picturesrow">
+		<td class="pic">
+			<img src="images/jeena.png" height="230" width="230"></br>
+			<h3>Jeena Khaira</h3>
+		</td>
+		<td class="pic">
+			<img src="images/max.png" height="230" width="230"></br>
+			<h3>Max Segal</h3>
+		</td>
+		<td class="pic">
+			<img src="images/amat.png" height="230" width="230"></br>
+			<h3>Amat Zahra</h3>
+		</td>
 
+	</tr>
+	<tr class="picturesrow">
+		<td class="pic">
+			<img src="images/vic.png" height="230" width="230"></br>
+		<h3>Vic Tsai</h3>
+		</td>
+
+		<td class="pic">
+			<img src="images/cameron.png" height="230" width="230"></br>
+			<h3>Cameron Chong</h3>
+		</td>
+		<td class="pic">
+			<img src="" height="230" width="230"></br>
+			<h3>Jayme Tezram</h3>
+		</td>
+	</tr>
+
+	<tr class= "inforow">
+		<td colspan="3">
+		<h2>Founders of Moola Control</h2>
+		<h2>Front End and Back End developers.</h2>
+		<h2>Computer Science students at the University of British Columbia.</h2>
+		<h2>Lab Project for COSC 310: Software Engineering</h2>
+		<h2>Professor: Dr. Youry Khemelevsky</h2>
+	</td>
+	</tr>
+
+</table>
 
 
 
@@ -143,7 +208,7 @@ h5{
                  <ul class="list-unstyled">
                       <li><a href="#!">The University of British Columbia Okanagan</a></li>
                       <li><a href="#!">info@moolacontrol.ca</a></li>
-              \
+
                 </ul>
           </div>
 

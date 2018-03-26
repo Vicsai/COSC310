@@ -71,16 +71,12 @@ footer{
            </a>
          </div>
          <div id="navbar1" class="navbar-collapse collapse">
-					 <?php if (!$isLoggedIn):
-						 					header(Location: userpage.php);
-						 ?>
-					<?php else: ?>
+					 <ul class="nav navbar-nav navbar-right">
 						<li><a href="howitworks.php">How it Works</a></li>
 						<li><a href="about.php">About Us</a></li>
-						<li><a href = "UserPage.php">'.$u.' Profile</a></li>
-						<li><a href="logout.php">LOG OUT</a></li>
-		       <?php endif; ?>
-           </ul>
+						<li><a href="regi_form.php">SIGN UP</a></li>
+						<li><a href="login.php">LOG IN</a></li>
+					</ul>
          </div>
          <!--/.nav-collapse -->
        </div>
