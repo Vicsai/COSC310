@@ -143,9 +143,9 @@ footer{
   <br>
    <select name ="category">
    <option disabled>Choose Expense</option>
-  <option >food</option>
-  <option >rent</option>
-  <option >clothing</option>
+  	<option >food</option>
+  	<option >rent</option>
+  	<option >clothing</option>
 	<option>entertainment</option>
 	<option>income</option>
 </select>
