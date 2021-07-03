@@ -1,19 +1,53 @@
 <?php
-$con=new mysqli('localhost','octo','w3b7ysX6','octo');
-if($con->connect_error){
+
+
+$db = new mysqli('localhost','octo','w3b7ysX6','octo');
+
+if($db->connect_error){
 	die("Connection failed");
 }
 
-session_start();
-$isLoggedIn = false;
-if(isset($_SESSION['user'])){
-$isLoggedIn =true;
-$u = $_SESSION['user'];
+
+if (isset($_POST['username']) && isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirmpassword']))
+{
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $password2 = $_POST['confirmpassword'];
+    
+    if ($password == $password2)
+    {
+     
+        $stmt = $db->prepare("INSERT INTO users VALUES(?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $username, $password, $firstName, $lastName, $email);
+  			
+        
+        if($stmt->execute()) 
+        {
+            header("location: login.php");
+        } 
+        else 
+        {
+            echo '<script type="text/javascript">alert("Something went wrong registering. Please try again");</script>';
+        }
+                        
+  			
+    }
+    else 
+    {
+        echo '<script type="text/javascript">alert("Passwords do not match!");</script>';
+    }
+}
+else
+{
+    echo '<script type="text/javascript">alert("There was a field missing. Please try again.");</script>';
 }
 
- ?>
 
-<!DOCTYPE html>
+?>
+
 <html>
 <head>
   <title>SIGN UP</title>
@@ -50,7 +84,6 @@ footer{
 .footer_copyright,h5{
   color: white;
 }
-
 </style>
 
   <main>

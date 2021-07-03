@@ -12,38 +12,44 @@ $u = $_SESSION['user'];
 }
 
  ?>
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Log In</title>
+  <title>Home</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width = device-width, initial-scale = 1">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" type="css/login.css">
 </head>
 <style>
-h1{
-  text-align: center;
-}
-form{
-  text-align: center;
-}
 .jumbotron{
-  margin-left: 25%;
-  margin-right: 25%;
   text-align: center;
-  padding-left: 5%;
-  padding-right: 5%;
-  margin-bottom: 20%;
+  margin-left: 30%;
+  margin-right: 30%;
   background-color: #282828;
   color: white;
-
 }
+.page-header,h3{
+  text-align: center;
+}
+.logo{
+  height: 4em;
+}
+h1{
+  font-size: 50pt;
+}
+
 body{
   background-color: #C0C0C0;
+}
+
+.nav-item{
+  padding: 3px 3px;
+  background-color: #282828;
+
+}
+.navbar{
+  background-color: #282828;
 }
 footer{
   background-color: #282828;
@@ -51,83 +57,66 @@ footer{
 .footer_copyright,h5{
   color: white;
 }
-
+.reviews{
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+  margin-bottom: 5%;
+}
+.aline{
+  padding-bottom: 5%;
+}
+h5{
+  color: black;
+}
 </style>
-<body>
-<div class="bg">
-  <header>
-
-    <div class="container">
-     <nav class="navbar navbar-inverse">
-       <div class="container-fluid">
-         <div class="navbar-header">
-           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
-             <span class="sr-only">Toggle navigation</span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-           </button>
-           <a href="homepage.php"><img src="images/mc_logo.png" width="100" height="50" alt="logo">
-           </a>
-         </div>
-         <div id="navbar1" class="navbar-collapse collapse">
-           <ul class="nav navbar-nav navbar-right">
-						 <li><a href="howitworks.php">How it Works</a></li>
-						 <li><a href="about.php">About Us</a></li>
-             <?php
-						 if(!$isLoggedIn){
-						 echo ' <li><a href="regi_form.php">SIGN UP</a></li> ';
-						 echo ' <li><a href="login.php">LOG IN</a></li>';
-					 }
-					 else{
-						 echo '<li><a href = "UserPage.php">'.$u.' Profile</a></li>';
-					 }
-						 ?>
-           </ul>
-         </div>
-         <!--/.nav-collapse -->
-       </div>
-       <!--/.container-fluid -->
-     </nav>
-    </div>
-
-    <div class= page-header>
-       <h1>LOG IN</h1>
-    </div>
-
-  </header>
-
-  <div class=jumbotron>
-<form action="login2.php" class="form" method = "post">
-  <br>
-
-
-    <div class="input-group input-group-sm center-block" >
-      <input type= "text" class= "form-control" id="username" name="username" required="required" placeholder="Username"/>
-    </div>
-
-
-    <div class="input-group input-group-sm center-block" class="insert2">
-      <input type= "password" class= "form-control" id="password" name="password" required="required" placeholder="Password"/>
-    </div>
-
-    <button type="submit" class = "btn btn-default bth-log" >Login</button>
-
-
-</form>
-<br>
+<div class="container">
+ <nav class="navbar navbar-inverse">
+   <div class="container-fluid">
+     <div class="navbar-header">
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a href="homepage.php"><img src="images/mc_logo.png" width="100" height="50" alt="logo">
+       </a>
+     </div>
+     <div id="navbar1" class="navbar-collapse collapse">
+			 <ul class="nav navbar-nav navbar-right">
+				 <li><a href="howitworks.php">How it Works</a></li>
+				 <li><a href="about.php">About Us</a></li>
+				 <?php
+				 if(!$isLoggedIn){
+				 echo ' <li><a href="regi_form.php">SIGN UP</a></li> ';
+				 echo ' <li><a href="login.php">LOG IN</a></li>';
+			 }
+			 else{
+				 echo '<li><a href = "UserPage.php">'.$u.' Profile</a></li>';
+			 }
+				 ?>
+			 </ul>
+     </div>]
+     <!--/.nav-collapse -->
+   </div>
+   <!--/.container-fluid -->
+ </nav>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<div class= page-header>
+   <h1>About Us</h1>
 </div>
-</body>
+
+
+
+
+
+
+
+
 
   <footer  class="page-footer font-small stylish-color-dark pt-4 mt-4">
-
-
-
-
 
     <div class="container-fluid text-center text-md-left">
 
@@ -154,7 +143,7 @@ footer{
                  <ul class="list-unstyled">
                       <li><a href="#!">The University of British Columbia Okanagan</a></li>
                       <li><a href="#!">info@moolacontrol.ca</a></li>
-
+              \
                 </ul>
           </div>
 
@@ -187,5 +176,6 @@ footer{
       </div>
     </div>
   </footer>
+
 
 </html>

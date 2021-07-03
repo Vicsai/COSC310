@@ -1,46 +1,37 @@
-<?php
-$con=new mysqli('localhost','octo','w3b7ysX6','octo');
-if($con->connect_error){
-	die("Connection failed");
-}
-
-session_start();
-$isLoggedIn = false;
-if(isset($_SESSION['user'])){
-$isLoggedIn =true;
-$u = $_SESSION['user'];
-}
-
- ?>
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Log In</title>
+  <title>User Page</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width = device-width, initial-scale = 1">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" type="css/login.css">
 </head>
 <style>
 h1{
   text-align: center;
 }
-form{
+.jumbotron{
+  margin-left: 10%;
+  margin-right: 10%;
   text-align: center;
 }
-.jumbotron{
-  margin-left: 25%;
-  margin-right: 25%;
+.insert{
   text-align: center;
-  padding-left: 5%;
-  padding-right: 5%;
-  margin-bottom: 20%;
-  background-color: #282828;
-  color: white;
+  padding-bottom: 5%
+}
+.insert2,.insert3,.insert4{
+  text-align: center;
+  margin-bottom: 5%;
+}
 
+insert4{
+  margin-bottom: 10%;
+}
+.btn-sample {
+  color: #ffffff;
+  background-color: #611BBD;
+  border-color: #130269;
 }
 body{
   background-color: #C0C0C0;
@@ -53,14 +44,18 @@ footer{
 }
 
 </style>
+
 <body>
-<div class="bg">
+   <div class="bg">
   <header>
+
+
 
     <div class="container">
      <nav class="navbar navbar-inverse">
        <div class="container-fluid">
          <div class="navbar-header">
+
            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
              <span class="sr-only">Toggle navigation</span>
              <span class="icon-bar"></span>
@@ -72,17 +67,7 @@ footer{
          </div>
          <div id="navbar1" class="navbar-collapse collapse">
            <ul class="nav navbar-nav navbar-right">
-						 <li><a href="howitworks.php">How it Works</a></li>
-						 <li><a href="about.php">About Us</a></li>
-             <?php
-						 if(!$isLoggedIn){
-						 echo ' <li><a href="regi_form.php">SIGN UP</a></li> ';
-						 echo ' <li><a href="login.php">LOG IN</a></li>';
-					 }
-					 else{
-						 echo '<li><a href = "UserPage.php">'.$u.' Profile</a></li>';
-					 }
-						 ?>
+             <li><a href="homepage.php">LOG OUT</a></li>
            </ul>
          </div>
          <!--/.nav-collapse -->
@@ -92,42 +77,31 @@ footer{
     </div>
 
     <div class= page-header>
-       <h1>LOG IN</h1>
+       <h1>CONTROL YOUR MOOLA</h1>
     </div>
 
   </header>
 
-  <div class=jumbotron>
-<form action="login2.php" class="form" method = "post">
-  <br>
 
-
-    <div class="input-group input-group-sm center-block" >
-      <input type= "text" class= "form-control" id="username" name="username" required="required" placeholder="Username"/>
-    </div>
-
-
-    <div class="input-group input-group-sm center-block" class="insert2">
-      <input type= "password" class= "form-control" id="password" name="password" required="required" placeholder="Password"/>
-    </div>
-
-    <button type="submit" class = "btn btn-default bth-log" >Login</button>
-
-
-</form>
-<br>
+  <div class=insert>
+  <a href="uploadPage.html" button type="button" class="btn btn-default">Link to Bank</button></a>
+  <a href="addExpense.php" button type="button" class="btn btn-default">Add Expense</button></a></br>
+  <a href="addBudget.php" button type="button" class="btn btn-default">Create Budget</button></a></br>
+</div>
+  <div class=insert2>
+    <a href="selectBudget.php"><button type="button" class="btn btn-sample btn-lg ">View Budget</button></a>
+  </div>
+  <div class=insert3>
+    <a href="selectMonthlyExpenses.php"><button type="button" class="btn btn-sample btn-lg ">View Monthly Spending</button></a>
+</div>
+<div class=insert4>
+    <a href="selectYearlyExpenses.php"><button type="button" class="btn btn-sample btn-lg ">View Yearly Spending</button></a>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </div>
 </body>
 
   <footer  class="page-footer font-small stylish-color-dark pt-4 mt-4">
-
-
-
-
 
     <div class="container-fluid text-center text-md-left">
 

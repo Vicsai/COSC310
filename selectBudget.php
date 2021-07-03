@@ -1,10 +1,48 @@
+<?php
+$con=new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con->connect_error){
+	die("Connection failed");
+}
 
+session_start();
+$isLoggedIn = false;
+if(isset($_SESSION['user'])){
+$isLoggedIn =true;
+$u = $_SESSION['user'];
+
+}
+?>
+
+<?php
+
+$years = array();
+$year = 2017;
+if($stmt=$con->prepare("SELECT DISTINCT year FROM finances WHERE username = ?")){
+$stmt->bind_param("s",$username);
+$username=$u;
+//set username to session attribute
+$stmt->execute();
+$stmt->bind_result($a);
+while($stmt->fetch()){
+	//echo $a;
+array_push($years,$a);
+}
+
+// for($i = 0; $i < count($years); $i++){
+// 	echo $years[$i];
+// }
+$stmt->close();
+}
+
+?>
+
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Add Here:</title>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width = device-width, initial-scale = 1">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <title>Budget</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <style>
 h1{
@@ -61,52 +99,75 @@ footer{
   margin-bottom: 10%;
 }
 
+
 </style>
 <body>
 
-	    <div class="container">
-	     <nav class="navbar navbar-inverse">
-	       <div class="container-fluid">
-	         <div class="navbar-header">
-	           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
-	             <span class="sr-only">Toggle navigation</span>
-	             <span class="icon-bar"></span>
-	             <span class="icon-bar"></span>
-	             <span class="icon-bar"></span>
-	           </button>
-	           <a href="homepage.php"><img src="images/mc_logo.png" width="100" height="50" alt="logo">
-	           </a>
-	         </div>
-	         <div id="navbar1" class="navbar-collapse collapse">
-	           <ul class="nav navbar-nav navbar-right">
-	             <li><a href="homepage.php">LOG OUT</a></li>
-	           </ul>
-	         </div>
-	         <!--/.nav-collapse -->
-	       </div>
-	       <!--/.container-fluid -->
-	     </nav>
-	    </div>
+
+      <div class="container">
+       <nav class="navbar navbar-inverse">
+         <div class="container-fluid">
+           <div class="navbar-header">
+             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+             </button>
+             <a href="homepage.php"><img src="images/mc_logo.png" width="100" height="50" alt="logo">
+             </a>
+           </div>
+           <div id="navbar1" class="navbar-collapse collapse">
+             <ul class="nav navbar-nav navbar-right">
+               <li><a href="homepage.php">LOG OUT</a></li>
+             </ul>
+           </div>
+           <!--/.nav-collapse -->
+         </div>
+         <!--/.container-fluid -->
+       </nav>
+      </div>
 
 <div class=jumbotron>
-    <form class="pageform" action="uploadFile.php" method="post" enctype="multipart/form-data">
-        <h3>Select your CSV file:</h3><br>
+<form method = "post" action = "viewMonthlyExpenses.php">
 
-        <input type="file" name="uploadFile" id="uploadFile">
-        <input type="submit" class="btn btn-success" value="Submit" name="submit">
-    </form>
+<select name = "month">
+   <option disabled>Choose Month</option>
+  <option >January</option>
+  <option >February</option>
+  <option >March</option>
+  <option >April</option>
+  <option >May</option>
+  <option >June</option>
+  <option >July</option>
+  <option >August</option>
+  <option >September</option>
+  <option >October</option>
+  <option >November</option>
+  <option >December</option>
+</select>
+  <br>
+
+
+<select name = "year">
+<?php
+for($i = 0; $i < count($years); $i++){
+	echo '<option>'.$years[$i].'</option>';
+}
+
+?>
+
+</select>
+  <input type="submit" class="btn btn-success" value="Submit">
+	</form>
 </div>
-
 </body>
 
 
-<footer  class="page-footer font-small stylish-color-dark pt-4 mt-4">
 
-
+<footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
   <div class="container-fluid text-center text-md-left">
-
     <div class="row">
-
         <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
           <p></p>
            <a href="homepage.php"><img src="images/mc_logo.png" width="100" height="50" alt="logo"></a>
@@ -161,4 +222,5 @@ footer{
     </div>
   </div>
 </footer>
+
 </html>

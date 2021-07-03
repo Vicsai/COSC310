@@ -1,8 +1,10 @@
-
 <?php
-$mysqli =new mysqli('localhost','octo','w3b7ysX6','octo');
-$db=mysqli_connect("localhost","octo","w3b7ysX6")
-or die("Error connecting to server");
+$con = new mysqli('localhost','octo','w3b7ysX6','octo');
+if($con ->connect_error){
+	die("Connection failed". $con->connect_error);
+}
+else
+	echo "connected";
 ?>
 <html>
 <head>
@@ -10,8 +12,10 @@ or die("Error connecting to server");
 <body>
 	<?php
 	// echo "I AM WORKING";
+	$moveLocation="csvFiles/".basename($_FILES["uploadFile"]["name"]);
+
 	$uploadOK=1;
-	$fileUploaded=basename($_FILES["uploadFile"]["name"]);
+	$fileUploaded=$_FILES["uploadFile"]["name"];
 	$fileUploaded=trim($fileUploaded);
 	$fileType=pathinfo($fileUploaded,PATHINFO_EXTENSION);
 	if(isset($_POST["submit"])){
@@ -20,15 +24,14 @@ or die("Error connecting to server");
 			$uploadOK=0;
 		}
 		if($uploadOK==1){
-			$sql = "LOAD DATA INFILE '$fileUploaded' INTO TABLE csvData"
+			
+			$sql="LOAD DATA LOCAL INFILE '$fileUploaded' INTO TABLE csvData"
 			. " FIELDS TERMINATED BY ','"
 			. " LINES TERMINATED BY '\r\n'"
 			. " IGNORE 1 LINES";
-			if(!($stmt=$mysqli->query($sql)))
-				echo "\nQuery execute failed: ERRNO: (" . $mysqli->errno . ") " . $mysqli->error;
+			$stmt=$con->query($sql);
 		}
 	}
-	mysqli_close($db);
 	?>
 </body>
 </html>
